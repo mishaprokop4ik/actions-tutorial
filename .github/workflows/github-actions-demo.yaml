@@ -12,6 +12,10 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "Manual run found, executing it..."
+          fi
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "${{ github.event_name}}"
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
